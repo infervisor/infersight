@@ -1,0 +1,38 @@
+[package]
+name = "is-top"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+repository.workspace = true
+description = "Professional terminal GPU & system monitor — like htop for GPUs"
+
+[dependencies]
+# Use the exporter library for GPU + system data collection
+is-exporter = { path = "../is-exporter", default-features = true, features = ["nvidia", "system"] }
+
+# Shared NVIDIA library (direct access for GPU monitoring)
+is-nvidia = { path = "../is-nvidia", features = ["nvidia"] }
+
+# TUI framework
+ratatui = "0.29"
+crossterm = "0.28"
+
+# Async runtime (needed to call async collectors)
+tokio = { version = "1", features = ["rt", "macros"] }
+
+# System info (per-core CPU, etc.)
+sysinfo = { workspace = true }
+
+# Color support
+color-eyre = "0.6"
+
+# Time formatting
+chrono = "0.4"
+
+[[bin]]
+name = "gpu-top"
+path = "src/main.rs"
+
+[lib]
+name = "is_top"
+path = "src/lib.rs"

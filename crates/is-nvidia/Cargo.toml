@@ -1,0 +1,15 @@
+[package]
+name = "is-nvidia"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+repository.workspace = true
+description = "Shared NVIDIA GPU library via NVML — common metrics and control operations"
+
+[features]
+default = []
+nvidia = ["dep:nvml-wrapper"]
+
+[dependencies]
+nvml-wrapper = { version = "0.11", optional = true }
+thiserror = "2"

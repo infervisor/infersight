@@ -1,0 +1,50 @@
+[package]
+name = "is-cli"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+repository.workspace = true
+description = "Unified InferSight CLI — export, monitor, and control GPUs from one binary"
+
+[features]
+default = ["nvidia"]
+nvidia = ["is-ctl/nvidia"]
+amd = ["is-ctl/amd"]
+
+[dependencies]
+# Subcommand crates (library reuse — DRY principle)
+is-exporter = { path = "../is-exporter", default-features = true, features = ["nvidia", "system"] }
+is-ctl = { path = "../is-ctl", default-features = false }
+is-top = { path = "../is-top" }
+is-amd-ffi = { path = "../is-amd-ffi", default-features = false }
+
+# CLI framework
+clap = { version = "4", features = ["derive"] }
+
+# Web (for export command)
+axum = "0.8"
+
+# Async runtime
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "signal", "time"] }
+
+# Error handling
+anyhow = "1"
+thiserror = "2"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+
+# Colored output
+colored = "3"
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Color support for TUI
+color-eyre = "0.6"
+
+[[bin]]
+name = "infersight"
+path = "src/main.rs"

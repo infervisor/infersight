@@ -1,0 +1,27 @@
+[workspace]
+members = [
+    "crates/is-amd-ffi",
+    "crates/is-nvidia",
+    "crates/is-exporter",
+    "crates/is-top",
+    "crates/is-ctl",
+    "crates/is-cli",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["storyvis <shaswot@storyvis.co>"]
+repository = "https://github.com/shaswot16/InferSight"
+
+[workspace.dependencies]
+# Shared dependencies across workspace
+sysinfo = "0.36"
+whoami = "1"
+thiserror = "2"
+anyhow = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "signal", "time"] }
+async-trait = "0.1"
