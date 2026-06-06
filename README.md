@@ -4,6 +4,11 @@
     <strong>Production-grade GPU observability & control toolkit for heterogeneous compute infrastructure</strong>
   </p>
   <p align="center">
+    <a href="https://github.com/infervisor/infersight"><img src="https://img.shields.io/badge/rust-1.75%2B-orange.svg" alt="Rust 1.75+"></a>
+    <a href="https://github.com/infervisor/infersight"><img src="https://img.shields.io/badge/platform-linux-lightgrey.svg" alt="Platform: Linux"></a>
+    <a href="https://github.com/infervisor/infersight"><img src="https://img.shields.io/badge/version-0.1.0-green.svg" alt="Version: 0.1.0"></a>
+  </p>
+  <p align="center">
     <a href="#why-infersight">Why InferSight</a> •
     <a href="#features">Features</a> •
     <a href="#quick-start">Quick Start</a> •
@@ -43,7 +48,7 @@ InferSight is designed for **SREs, ML engineers, and platform teams** who need p
 - **Graceful degradation** — missing vendors don't crash the process
 - **Structured logging** — `tracing` with env-filter for debugging
 - **Workspace monorepo** — shared dependencies, single lockfile, DRY codebase
-
+ 
 ---
 
 ## Quick Start
@@ -51,7 +56,7 @@ InferSight is designed for **SREs, ML engineers, and platform teams** who need p
 ```bash
 # Clone the repository
 git clone https://github.com/infervisor/infersight.git
-cd InferSight
+cd infersight
 
 # Build all binaries
 cargo build --release
@@ -221,6 +226,15 @@ cargo test --workspace
 cargo check -p is-exporter --all-features
 ```
 
+### Nix
+
+A `flake.nix` is provided for reproducible builds:
+
+```bash
+nix build          # Build the unified infersight binary
+nix develop        # Enter development shell with Rust toolchain
+```
+
 ### Feature Flags
 
 | Feature | Default | Description |
@@ -235,8 +249,11 @@ cargo check -p is-exporter --all-features
 ## Project Structure
 
 ```
-InferSight/
+infersight/
 ├── Cargo.toml                          # Workspace root
+├── flake.nix                           # Nix flake for reproducible builds
+├── dashboards/                         # Grafana dashboard JSON
+│   └── gpu-system-overview.json
 ├── crates/
 │   ├── is-nvidia/                      # Shared NVIDIA library (NVML)
 │   │   └── src/
@@ -264,7 +281,7 @@ InferSight/
 │   │   └── src/
 │   │       ├── lib.rs                  # App event loop
 │   │       ├── ui.rs                   # Ratatui rendering
-│   │       └── gpu.rs / system.rs      # Data collection (reuses exporter)
+│   │       └── gpu.rs / system.rs      # Data collection
 │   │
 │   └── is-cli/                         # Unified binary
 │       └── src/
@@ -311,6 +328,10 @@ scrape_configs:
       - targets: ['gpu-node:9835']
 ```
 
+### Grafana Dashboard
+
+A pre-built Grafana dashboard is included at [`dashboards/gpu-system-overview.json`](dashboards/gpu-system-overview.json). Import it into your Grafana instance for immediate GPU & system visualization.
+
 ### Systemd Service
 
 ```ini
@@ -327,3 +348,4 @@ RestartSec=5
 [Install]
 WantedBy=multi-user.target
 ```
+

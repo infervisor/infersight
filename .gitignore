@@ -1,2 +1,22 @@
+# Rust build artifacts
 /target
+**/target
+
+# Nix
 result
+result-*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local

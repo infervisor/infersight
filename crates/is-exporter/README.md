@@ -34,11 +34,9 @@ is-exporter/
 │   │   ├── registry.rs      # Global Prometheus registry
 │   │   ├── gpu_metrics.rs   # GPU metric definitions
 │   │   └── system_metrics.rs # System metric definitions
-│   ├── exporter/
-│   │   ├── mod.rs           # Exporter module
-│   │   └── prometheus.rs    # HTTP handlers (Axum)
-│   └── ffi/
-│       └── mod.rs           # CXX bridge for AMD SMI
+│   └── exporter/
+│       ├── mod.rs           # Exporter module
+│       └── prometheus.rs    # HTTP handlers (Axum)
 ├── cpp/
 │   ├── amd_smi_wrapper.h    # C++ header for AMD SMI
 │   └── amd_smi_wrapper.cpp  # C++ implementation (~250 lines vs 1200+)
