@@ -1049,7 +1049,7 @@ fn draw_footer(frame: &mut Frame, _app: &App, area: Rect) {
         ),
         Span::styled("│ ", Style::default().fg(DARK_GRAY)),
         Span::styled(
-            "github.com/shaswot16/InferSight",
+            "github.com/infervisor/infersight",
             Style::default().fg(DARK_GRAY),
         ),
     ]);

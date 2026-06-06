@@ -28,7 +28,7 @@
 │ ▁▃▅▇█▇▅▃▁▂▄▆█▇▅▃▁▁ ││ ▁▃▅▇█▇▅▃▁▂▄▆█▇▅▃▁▁ ││ ▂▃▅▆▇▇▆▅▃▂▁▂▃▄▅▆▇▇▆▅▃▂▁          │
 └──────────────────────┘└──────────────────────┘└────────────────────────────────────┘
  q/Esc Quit │ Tab/1/2 Switch View │ ←/→/h/l GPU │ r Refresh │ ? Help
- InferSight v0.1.0 │ github.com/shaswot16/InferSight
+ InferSight v0.1.0 │ github.com/infervisor/infersight
 ```
 
 ## What is InferSight-top?

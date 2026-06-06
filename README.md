@@ -50,7 +50,7 @@ InferSight is designed for **SREs, ML engineers, and platform teams** who need p
 
 ```bash
 # Clone the repository
-git clone https://github.com/shaswot16/InferSight.git
+git clone https://github.com/infervisor/infersight.git
 cd InferSight
 
 # Build all binaries

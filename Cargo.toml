@@ -13,7 +13,7 @@ resolver = "2"
 version = "0.1.0"
 edition = "2021"
 authors = ["storyvis <shaswot@storyvis.co>"]
-repository = "https://github.com/shaswot16/InferSight"
+repository = "https://github.com/infervisor/infersight"
 
 [workspace.dependencies]
 # Shared dependencies across workspace
