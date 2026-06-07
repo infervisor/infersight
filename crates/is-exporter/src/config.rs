@@ -5,7 +5,7 @@ use clap::Parser;
 /// GPU Metrics Exporter — Prometheus exporter for AMD, NVIDIA, and system metrics.
 #[derive(Parser, Debug, Clone)]
 #[command(
-    name = "gpu-exporter",
+    name = "is-exporter",
     version,
     about = "Professional GPU metrics exporter for Prometheus",
     long_about = "Collects GPU and system metrics from AMD (via ROCm SMI), NVIDIA (via NVML), \

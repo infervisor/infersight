@@ -1,4 +1,4 @@
-//! gpu-top — Professional terminal GPU & system monitor.
+//! is-top — Professional terminal GPU & system monitor.
 //!
 //! Like htop, but for GPUs and system resources. Real-time monitoring of:
 //! • Per-core CPU usage with htop-style colored bars

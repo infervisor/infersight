@@ -71,19 +71,19 @@ cargo build --release --features "nvidia,amd,system,tpu"
 
 ```bash
 # Enable all collectors on default port (9835)
-gpu-exporter --all
+is-exporter --all
 
 # NVIDIA only on custom port
-gpu-exporter --nvidia --port 9100
+is-exporter --nvidia --port 9100
 
 # AMD + System with debug logging
-gpu-exporter --amd --system --log-level debug
+is-exporter --amd --system --log-level debug
 
 # Google Cloud TPU (on a TPU VM)
-gpu-exporter --tpu --system
+is-exporter --tpu --system
 
 # Show help
-gpu-exporter --help
+is-exporter --help
 ```
 
 ### CLI Options

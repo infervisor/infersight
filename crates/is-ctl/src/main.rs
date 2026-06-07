@@ -1,24 +1,24 @@
-//! gpu-ctl — GPU power & clock control CLI.
+//! is-ctl — GPU power & clock control CLI.
 //!
 //! Usage:
-//!   gpu-ctl nvidia list                      # List all NVIDIA GPUs
-//!   gpu-ctl nvidia info 0                    # Detailed info for NVIDIA GPU 0
-//!   gpu-ctl nvidia set-clocks 0 --mem 2619 --graphics 1785
-//!   gpu-ctl nvidia set-power-limit 0 --watts 300
-//!   gpu-ctl nvidia set-perf 0 --level high
-//!   gpu-ctl nvidia reset 0                   # Reset NVIDIA GPU 0 to defaults
-//!   gpu-ctl amd list                         # List all AMD GPUs
-//!   gpu-ctl amd info 0                       # Detailed info for AMD GPU 0
-//!   gpu-ctl amd set-power-limit 0 --watts 200
-//!   gpu-ctl amd set-perf 0 --level high
-//!   gpu-ctl amd reset 0
+//!   is-ctl nvidia list                      # List all NVIDIA GPUs
+//!   is-ctl nvidia info 0                    # Detailed info for NVIDIA GPU 0
+//!   is-ctl nvidia set-clocks 0 --mem 2619 --graphics 1785
+//!   is-ctl nvidia set-power-limit 0 --watts 300
+//!   is-ctl nvidia set-perf 0 --level high
+//!   is-ctl nvidia reset 0                   # Reset NVIDIA GPU 0 to defaults
+//!   is-ctl amd list                         # List all AMD GPUs
+//!   is-ctl amd info 0                       # Detailed info for AMD GPU 0
+//!   is-ctl amd set-power-limit 0 --watts 200
+//!   is-ctl amd set-perf 0 --level high
+//!   is-ctl amd reset 0
 
 use clap::{Parser, Subcommand};
 use is_ctl::{OutputFormat, PerfLevel};
 
 #[derive(Parser)]
 #[command(
-    name = "gpu-ctl",
+    name = "is-ctl",
     version,
     about = "GPU power & clock control CLI for NVIDIA and AMD GPUs",
     long_about = "Professional GPU management tool. Set clock speeds, power limits, \

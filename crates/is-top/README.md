@@ -1,4 +1,4 @@
-# InferSight-top (gpu-top)
+# InferSight-top (is-top)
 
 **A professional terminal GPU & system monitor — like `htop`, but for GPUs.**
 
@@ -33,7 +33,7 @@
 
 ## What is InferSight-top?
 
-`gpu-top` (InferSight-top) is a real-time terminal dashboard for monitoring both **GPU** and **system** performance — designed for ML engineers, CUDA developers, DevOps, and anyone working with NVIDIA GPUs. Think of it as `htop` or `btop` but specifically built for GPU workloads with full system context.
+`is-top` (InferSight-top) is a real-time terminal dashboard for monitoring both **GPU** and **system** performance — designed for ML engineers, CUDA developers, DevOps, and anyone working with NVIDIA GPUs. Think of it as `htop` or `btop` but specifically built for GPU workloads with full system context.
 
 It gives you an instant, at-a-glance view of everything happening on your GPUs **and** your system without leaving the terminal.
 
@@ -95,7 +95,7 @@ It gives you an instant, at-a-glance view of everything happening on your GPUs *
 ### Build from source (requires Rust):
 ```bash
 cargo build --release -p is-top
-# Binary at: ./target/release/gpu-top
+# Binary at: ./target/release/is-top
 ```
 
 ### Run directly:
@@ -119,7 +119,7 @@ cargo install --path crates/is-top
 
 ```bash
 # Just run it
-gpu-top
+is-top
 ```
 
 ### Keyboard Controls

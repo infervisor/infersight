@@ -160,7 +160,7 @@ pub fn set_clocks(index: u32, mem_clk: u32, graphics_clk: u32) -> Result<()> {
         bail!(
             "Memory clock {mem_clk} MHz not supported.\n\
              Supported: {supported_mem:?}\n\
-             Hint: Use 'gpu-ctl supported-clocks {index}' to see valid combinations."
+             Hint: Use 'is-ctl supported-clocks {index}' to see valid combinations."
         );
     }
 

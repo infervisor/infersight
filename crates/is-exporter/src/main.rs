@@ -1,9 +1,9 @@
 //! GPU Exporter — Professional Prometheus metrics exporter for GPU and system monitoring.
 //!
 //! Usage:
-//!   gpu-exporter --all                    # Enable all collectors
-//!   gpu-exporter --nvidia --system        # NVIDIA + system only
-//!   gpu-exporter --amd --port 9100        # AMD on custom port
+//!   is-exporter --all                    # Enable all collectors
+//!   is-exporter --nvidia --system        # NVIDIA + system only
+//!   is-exporter --amd --port 9100        # AMD on custom port
 
 use std::net::SocketAddr;
 use std::sync::Arc;

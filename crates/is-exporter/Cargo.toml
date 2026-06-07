@@ -56,5 +56,5 @@ reqwest = { version = "0.12", features = ["json"], optional = true }
 is-amd-ffi = { path = "../is-amd-ffi", default-features = false, features = ["amd"], optional = true }
 
 [[bin]]
-name = "gpu-exporter"
+name = "is-exporter"
 path = "src/main.rs"

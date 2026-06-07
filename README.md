@@ -29,8 +29,8 @@ Modern AI/ML workloads rely heavily on GPU clusters — yet GPU observability re
 | `nvidia-smi` is NVIDIA-only and hard to parse | Unified multi-vendor interface (NVIDIA + AMD + TPU) |
 | No native Prometheus metrics for GPUs | First-class `/metrics` endpoint with labeled GPU metrics |
 | Separate tools for monitoring vs. control | Single workspace: monitor, export, and control from one toolkit |
-| No real-time terminal dashboards for GPUs | `gpu-top` — interactive TUI with sparkline history |
-| GPU clock/power management is arcane | `gpu-ctl` — validated, human-friendly clock & power control |
+| No real-time terminal dashboards for GPUs | `is-top` — interactive TUI with sparkline history |
+| GPU clock/power management is arcane | `is-ctl` — validated, human-friendly clock & power control |
 | Python-based tools have high overhead | Zero-overhead Rust — single static binaries, no runtime deps |
 
 InferSight is designed for **SREs, ML engineers, and platform teams** who need production-grade GPU telemetry that integrates seamlessly with Prometheus/Grafana, Kubernetes, and modern infrastructure tooling.
@@ -62,13 +62,13 @@ cd infersight
 cargo build --release
 
 # Start the Prometheus exporter (auto-detects GPUs)
-./target/release/gpu-exporter --all
+./target/release/is-exporter --all
 
 # In another terminal — launch the interactive monitor
-./target/release/gpu-top
+./target/release/is-top
 
 # Control GPU clocks (requires root)
-sudo ./target/release/gpu-ctl nvidia set-clocks 0 --mem 2619 --graphics 1785
+sudo ./target/release/is-ctl nvidia set-clocks 0 --mem 2619 --graphics 1785
 ```
 
 ---
@@ -104,14 +104,14 @@ sudo ./target/release/gpu-ctl nvidia set-clocks 0 --mem 2619 --graphics 1785
 
 ## Components
 
-### `gpu-exporter` — Prometheus Metrics Exporter
+### `is-exporter` — Prometheus Metrics Exporter
 
 Exposes GPU and system metrics as Prometheus-compatible time series.
 
 ```bash
-gpu-exporter --all                     # All collectors, default port 9835
-gpu-exporter --nvidia --port 9100      # NVIDIA only, custom port
-gpu-exporter --tpu --system            # TPU + system (GCE TPU VMs)
+is-exporter --all                     # All collectors, default port 9835
+is-exporter --nvidia --port 9100      # NVIDIA only, custom port
+is-exporter --tpu --system            # TPU + system (GCE TPU VMs)
 ```
 
 **Endpoints:**
@@ -126,12 +126,12 @@ gpu-exporter --tpu --system            # TPU + system (GCE TPU VMs)
 
 ---
 
-### `gpu-top` — Interactive Terminal Monitor
+### `is-top` — Interactive Terminal Monitor
 
 Real-time GPU dashboard in your terminal — like `htop` but for GPUs.
 
 ```bash
-gpu-top
+is-top
 ```
 
 **Controls:**
@@ -147,36 +147,36 @@ gpu-top
 
 ---
 
-### `gpu-ctl` — GPU Power & Clock Control
+### `is-ctl` — GPU Power & Clock Control
 
 Professional GPU management CLI with hardware constraint validation.
 
 ```bash
 # List all GPUs
-gpu-ctl nvidia list
-gpu-ctl amd list
+is-ctl nvidia list
+is-ctl amd list
 
 # Detailed device info
-gpu-ctl nvidia info 0
+is-ctl nvidia info 0
 
 # Set application clocks (validated against supported ranges)
-gpu-ctl nvidia set-clocks 0 --mem 2619 --graphics 1785
+is-ctl nvidia set-clocks 0 --mem 2619 --graphics 1785
 
 # Set power limit
-gpu-ctl nvidia set-power-limit 0 --watts 300
+is-ctl nvidia set-power-limit 0 --watts 300
 
 # Set performance level
-gpu-ctl nvidia set-perf --all --level high
-gpu-ctl amd set-perf 0 --level auto
+is-ctl nvidia set-perf --all --level high
+is-ctl amd set-perf 0 --level auto
 
 # Reset to defaults
-gpu-ctl nvidia reset --all
+is-ctl nvidia reset --all
 
 # Show supported clock combinations
-gpu-ctl nvidia supported-clocks 0
+is-ctl nvidia supported-clocks 0
 
 # JSON output for scripting
-gpu-ctl nvidia list --format json
+is-ctl nvidia list --format json
 ```
 
 > **Note:** Write operations (set-clocks, set-power-limit, set-perf, reset) require **root/sudo**.
@@ -313,9 +313,9 @@ infersight/
 
 ```bash
 cargo build --release
-cp target/release/gpu-exporter /usr/local/bin/
-cp target/release/gpu-top /usr/local/bin/
-cp target/release/gpu-ctl /usr/local/bin/
+cp target/release/is-exporter /usr/local/bin/
+cp target/release/is-top /usr/local/bin/
+cp target/release/is-ctl /usr/local/bin/
 ```
 
 ### Kubernetes / Prometheus
@@ -341,7 +341,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/gpu-exporter --all
+ExecStart=/usr/local/bin/is-exporter --all
 Restart=always
 RestartSec=5
 

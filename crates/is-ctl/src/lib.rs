@@ -2,7 +2,7 @@
 //!
 //! This crate provides the core control logic for NVIDIA and AMD GPUs.
 //! It can be used as a library by other crates (e.g., `is-cli`)
-//! or as a standalone binary (`gpu-ctl`).
+//! or as a standalone binary (`is-ctl`).
 //!
 //! # Architecture
 //! - `nvidia` module: NVIDIA GPU control via NVML (requires `nvidia` feature)
