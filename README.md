@@ -436,18 +436,6 @@ WantedBy=multi-user.target
 
 ---
 
-## Limitations
-
-- Linux only; no Windows or macOS support.
-- AMD GPU support requires x86_64 architecture and the ROCm SMI library to be installed.
-- TPU support requires running on a Google Cloud TPU VM with the local metrics endpoint at `localhost:8431`.
-- Write operations (clock speeds, power limits, performance levels) require root privileges.
-- The `is-top` TUI currently supports NVIDIA GPUs only for the process listing tab.
-- No Docker container or container image is provided.
-- No automated test suite is present.
-
----
-
 ## Contributing
 
 1. Fork the repository.
